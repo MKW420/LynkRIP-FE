@@ -17,7 +17,7 @@ class auth extends StatelessWidget {
             SizedBox(height:80),
             Text("Lynk", style:h1, ),
             SizedBox(height:10),
-            Text("Welcome back", style:h2.copyWith(fontSize: 15, color:black) ),
+            Text("Welcome back to Lynk!", style:h2.copyWith(fontSize: 15, color:black) ),
             SizedBox(height:120),
             Padding(
               padding:EdgeInsets.symmetric(horizontal:22),
@@ -73,7 +73,7 @@ class auth extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: (){
-                      FirebaseServices().googleSignIn;
+                      FirebaseServices().signInWithGoogle();
                     },
                     child:Container(
                        height:44,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lynkripe_v1/firebase_options.dart';
+import 'package:lynkripe_v1/pages/auth_register.dart';
 import '/pages/onboarding/onboarding.dart';
 import 'pages/auth_signUp.dart';
 import '/pages/Home.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: auth());
+    return MaterialApp(home: authRegister());
   }
 }
 

@@ -3,12 +3,31 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseServices {
   final auth = FirebaseAuth.instance;
+  User? get currentUser => auth.currentUser;
+
+  Stream<User?> get authStateChanges => auth.authStateChanges();
+  
+  // Future<UserCredential>  signIn({
+  //   required String email,
+  //   required password,
+
+  // })async{
+  //   return await auth.signInWithEmailAndPassword(email: email, password:password);
+  // }
+
+  // Future<UserCredential>  createAccount({
+  //   required String email,
+  //   required password,
+
+  // })async{
+  //   return await auth.createUserWithEmailAndPassword(email: email, password:password);
+  // }
+
 
   final googleSignIn = GoogleSignIn();
 
   Future<bool> signInWithGoogle() async {
-    final GoogleSignInAccount? googleSignInAccount = await googleSignIn
-        .signIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
     try {
       final GoogleSignInAccount? googleSignInAccount = await googleSignIn
           .signIn();
@@ -54,7 +73,9 @@ class FirebaseServices {
     }
   }
 
-  Future<void> SignInWithEmailAndPassword(String email, String password) async{
+ 
+
+  Future<void> SignInWithEmailAndPassword( String email,  String password) async{
     try{
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       print("User signed in:${credential.user?.uid}");

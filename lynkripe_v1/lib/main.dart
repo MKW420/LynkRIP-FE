@@ -44,7 +44,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       body: <Widget>[
         const Explore(),
         const Hubs(),
-        const Profile(),
+        const profile(),
       ][currentPageIndex],
 
       bottomNavigationBar: NavigationBar(

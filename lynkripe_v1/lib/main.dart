@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lynkripe_v1/firebase_options.dart';
 import '/pages/onboarding/onboarding.dart';
-import 'pages/auth/auth.dart';
+import 'pages/auth_signUp.dart';
 import '/pages/Home.dart';
 import '/pages/hubs.dart';
 import '/pages/profile.dart';
@@ -8,11 +9,11 @@ import 'package:firebase_core/firebase_core.dart';
 //import 'firebase_options.dart';
 
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  // options: DefaultFirebaseOptions.currentPlatform,
-//);
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 

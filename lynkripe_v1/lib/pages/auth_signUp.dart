@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'services/google_auth.dart';
+import '../services/firebase/firebase_auth.dart';
 import '/components/button.dart';
 import '/constants.dart';
 
@@ -13,7 +13,6 @@ class auth extends StatelessWidget {
         body:Column(
           
           children: [
-            
             SizedBox(height:80),
             Text("Lynk", style:h1, ),
             SizedBox(height:10),

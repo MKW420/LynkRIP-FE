@@ -4,6 +4,15 @@ import '/components/HubCard.dart';
 class Hubs extends StatelessWidget {
   const Hubs({super.key});
 
+  //catching text values
+  //final nameController = TextEditingController();
+  //calling to catch whats entered
+  //TextFormField(controller:nameController, decoration:const InputDecoration(hintText: 'Name'))
+  //button submit
+  //onPressed: (){ CollectionReference collRef = FirebaseFirestore.instnace.collection('client');
+  //collRef.add({
+  //'name': nameController.Text})}
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

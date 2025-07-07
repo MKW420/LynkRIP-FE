@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import '/components/Tags.dart';
 import '/components/search.dart';
 
-/// Flutter code sample for custom list items.
-
-void main() => runApp(const Explore());
-
 class Explore extends StatelessWidget {
   const Explore({super.key});
 
@@ -14,7 +10,6 @@ class Explore extends StatelessWidget {
     return const MaterialApp(home: CustomListItemExample());
   }
 }
-
 class _ArticleDescription extends StatelessWidget {
   const _ArticleDescription({
     required this.title,

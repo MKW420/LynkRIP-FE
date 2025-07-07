@@ -53,4 +53,24 @@ class FirebaseServices {
       print(e);
     }
   }
+
+  Future<void> SignInWithEmailAndPassword(String email, String password) async{
+    try{
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      print("User signed in:${credential.user?.uid}");
+    }
+    on FirebaseAuthException catch (e){
+      if(e.code == 'user-not-found'){
+        print("No user found with that email.");
+      }
+      else if(e.code == 'wrong-password'){
+       print("Wrong password provided for this user.");
+      }
+    }
+  }
+
+  Future<void> signOut()async{
+    await FirebaseAuth.instance.signOut();
+    print("User sign out");
+  }
 }

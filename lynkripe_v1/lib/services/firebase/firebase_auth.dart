@@ -1,5 +1,6 @@
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:lynkripe_v1/services/firebase/userRepo.dart';
 
 class FirebaseServices {
   final auth = FirebaseAuth.instance;

@@ -10,5 +10,5 @@ abstract class Firebaserepo{
 
     Future<void> signIn(String email, String password);
     
-
+     Future<void> signOut();
 }

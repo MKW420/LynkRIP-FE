@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lynkripe_v1/models/user_model.dart';
-import 'package:lynkripe_v1/services/firebase/userRepo.dart';
+import 'package:lynkripe_v1/services/firebase/repository/auth_repository.dart';
 
 class FirebaseUser implements Firebaserepo{
   final FirebaseAuth _firebaseAuth;
@@ -19,11 +19,14 @@ class FirebaseUser implements Firebaserepo{
         email: email,
         password: password);
 
-     }catch(e){
-      //log(e.toString());
-      rethrow;
-
-     }
+     }on FirebaseAuthException catch (e){
+      if(e.code == 'user-not-found'){
+        print("No user found with that email.");
+      }
+      else if(e.code == 'wrong-password'){
+       print("Wrong password provided for this user.");
+      }
+    }
   }
 
   @override
@@ -37,7 +40,6 @@ class FirebaseUser implements Firebaserepo{
           userId: user.user!.uid
         );
         return myUser;
-
      }catch(e){
       rethrow;
      }
@@ -46,20 +48,24 @@ class FirebaseUser implements Firebaserepo{
   @override
   Stream<User?> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
-            return firebaseUser;
+        return firebaseUser;
     });
-  
   }
 
   @override
   Future<void> setUserData(MyUser myUser)async {
-    
     try{
       await usersCollection.doc(myUser.userId).set(myUser.toEntity().toDocument());
 
     }catch(e){
       rethrow;
     }
+  }
+  
+  @override
+  Future<void> signOut() async {
+     await FirebaseAuth.instance.signOut();
+     print("User sign out");
   }
   
 

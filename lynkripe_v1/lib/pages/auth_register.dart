@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/firebase/firebase_auth.dart';
+import '../services/firebase/firebase_auth_google.dart';
 import '/components/button.dart';
 import '/constants.dart';
 

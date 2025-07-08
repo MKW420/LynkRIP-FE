@@ -43,7 +43,7 @@ class Hubs extends Equatable{
       String? hubName,
       String? hubDescription,
       DateTime? hubCreationDate,
-      String? hubshareLink
+      String? hubshareURL
     }){
       return Hubs(
        hubId: hubId ?? this.hubId, 
@@ -52,7 +52,7 @@ class Hubs extends Equatable{
        hubName: hubName ?? this.hubName, 
        hubDescription: hubDescription ?? this.hubDescription,
        hubCreationDate: hubCreationDate ?? this.hubCreationDate,
-       hubshareURL: hubshareLink ?? this.hubshareURL);
+       hubshareURL: hubshareURL ?? this.hubshareURL);
     }
 
     HubEntity toEntity(){

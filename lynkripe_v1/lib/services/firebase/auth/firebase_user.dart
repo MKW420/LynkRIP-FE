@@ -68,5 +68,4 @@ class FirebaseUser implements Firebaserepo{
      print("User sign out");
   }
   
-
 }

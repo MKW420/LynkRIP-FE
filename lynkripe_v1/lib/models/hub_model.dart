@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:lynkripe_v1/entities/hub_entity.dart';
 import '../entities/entities.dart';
 

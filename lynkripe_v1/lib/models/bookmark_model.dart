@@ -1,7 +1,6 @@
+
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:lynkripe_v1/entities/bookmark_entity.dart';
-import 'package:lynkripe_v1/entities/hub_entity.dart';
 import '../entities/entities.dart';
 
 class Bookmark extends Equatable{
@@ -11,6 +10,7 @@ class Bookmark extends Equatable{
   final String? bookmarkText;
   final DateTime? bookmarkCreationDate;
   final String source;
+  final List<String> tags;
 
 
 //CONSTRUCTER
@@ -20,6 +20,7 @@ class Bookmark extends Equatable{
     required this.bookmarkText,
     required this.bookmarkCreationDate,
     required this.source,
+    required this.tags
    
   });
 
@@ -29,6 +30,7 @@ class Bookmark extends Equatable{
     bookmarkText: '',
     bookmarkCreationDate: null,
     source: '',
+    tags: []
     );
     
 
@@ -39,13 +41,15 @@ class Bookmark extends Equatable{
       String? bookmarkText,
       DateTime? bookmarkCreationDate,
       String? source,
+      List<String>? tags
     }){
       return Bookmark(
        bookmarkId: bookmarkId ?? this.bookmarkId, 
        bookmarkURL: bookmarkURL ?? this.bookmarkURL, 
        bookmarkText: bookmarkText ?? this.bookmarkText, 
        bookmarkCreationDate: bookmarkCreationDate ?? this.bookmarkCreationDate, 
-       source: source ?? this.source
+       source: source ?? this.source,
+       tags: tags ?? this.tags
       );
     }
 
@@ -56,6 +60,7 @@ class Bookmark extends Equatable{
          bookmarkText: bookmarkText,
          bookmarkCreationDate: bookmarkCreationDate,
          source: source,
+         tags:tags
        
        );
     }
@@ -67,10 +72,11 @@ class Bookmark extends Equatable{
         bookmarkText: entity.bookmarkText,
         bookmarkCreationDate: entity.bookmarkCreationDate,
         source: entity.source,
+        tags:entity.tags
         );
     }
   
   @override
-  List<Object?> get props => [bookmarkId,bookmarkURL,bookmarkText,bookmarkCreationDate,source];
+  List<Object?> get props => [bookmarkId,bookmarkURL,bookmarkText,bookmarkCreationDate,source, tags];
   
 }

@@ -6,6 +6,7 @@ class BookmarkEntity extends Equatable{
   final String? bookmarkText;
   final DateTime? bookmarkCreationDate;
   final String source;
+  final List<String> tags;
 
   const BookmarkEntity({
     required this.bookmarkId,
@@ -13,6 +14,7 @@ class BookmarkEntity extends Equatable{
     required this.bookmarkText,
     required this.bookmarkCreationDate,
     required this.source,
+    required this.tags
   });
 
   Map<String, Object?> toDocument(){
@@ -22,6 +24,7 @@ class BookmarkEntity extends Equatable{
       'bookmarkText': bookmarkText,
       'bookmarkCreationDate': bookmarkCreationDate,
       'source': source,
+      'tags': tags
     };
   }
 
@@ -32,9 +35,10 @@ class BookmarkEntity extends Equatable{
       bookmarkText: doc['bookmarkText'],
       bookmarkCreationDate: doc['bookmarkCreationDate'],
       source: doc['source'],
+      tags: doc['tags']
       );
    }
 
   @override
-  List<Object?> get props => [bookmarkId,bookmarkURL,bookmarkText,bookmarkCreationDate,source];
+  List<Object?> get props => [bookmarkId,bookmarkURL,bookmarkText,bookmarkCreationDate,source, tags];
 }

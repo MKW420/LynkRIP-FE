@@ -41,6 +41,7 @@ dependencies:
   clipboard_watcher: ^0.3.0
   shared_preferences: ^2.5.3
   clipboard: ^0.1.3
+  receive_sharing_intent: ^1.8.1
 
 dev_dependencies:
   flutter_test:

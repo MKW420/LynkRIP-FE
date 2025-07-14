@@ -1,14 +1,24 @@
 
 import 'package:flutter/material.dart';
+import 'package:lynkripe_v1/constants.dart';
 import '/components/Tags.dart';
 
 class HubCard extends StatelessWidget {
-  const HubCard({super.key});
+  final String title;
+  final String description;
+  final String imgSrc;
+
+  const HubCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.imgSrc    
+    });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: background,
 
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -22,18 +32,18 @@ class HubCard extends StatelessWidget {
           itemCount: 8,
           itemBuilder: (context, index) {
             return Container(
-              decoration: BoxDecoration(color: Colors.grey[50]),
+              decoration: BoxDecoration(color: hubColor),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
                   Image.asset('assets/p.jpg'),
                   const SizedBox(height: 8),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12.0),
                     child: Text(
-                      'Enchanted Tales',
-                      style: TextStyle(
+                      title,
+                      style: const TextStyle(
                         fontSize: 15,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -43,29 +53,36 @@ class HubCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12.0),
                     child: Text(
-                      'Enchanted Tales of Tech World',
+                      description,
                       style: const TextStyle(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 6,
-                      horizontal: 12.0,
-                    ),
-                    child: Row(
+                  ), 
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Tags(),
                         IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          icon: Icon(Icons.star, size: 18.0, color: vibrantOrange ,),
+                        ),
+                         IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          icon: Icon(Icons.hub, size: 18.0, color: successGreen ,),
+                        ),
+                        IconButton(
+                          padding: EdgeInsets.zero,
                           onPressed: () {},
                           icon: Icon(Icons.share, size: 18.0),
                         ),
                       ],
                     ),
-                  ),
+                  
                 ],
               ),
             );

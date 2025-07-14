@@ -94,7 +94,7 @@ class authRegister extends StatelessWidget {
               SizedBox(height:30, width: 160),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 22),
-                child:Custombutton()
+                child:Custombutton(buttonText: 'Register',)
               ),
               SizedBox(height: 40),
               Text("Or continue registering with", style: body.copyWith(

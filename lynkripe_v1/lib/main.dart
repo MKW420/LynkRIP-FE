@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lynkripe_v1/constants.dart';
 import 'package:lynkripe_v1/firebase_options.dart';
 import 'package:lynkripe_v1/pages/auth_register.dart';
 import '/pages/onboarding/onboarding.dart';
@@ -11,6 +12,7 @@ import 'firebase_options.dart';
 
 
 void main() async{
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: authRegister());
+    return MaterialApp(home: NavigationBarPage());
   }
 }
 
@@ -55,12 +57,12 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
             currentPageIndex = index;
           });
         },
-        indicatorColor: Colors.grey[200],
+        indicatorColor: lightPrimary,
         destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.hub), label: 'Hubs'),
+          NavigationDestination(icon: Icon(Icons.home, color: primary,), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.hub, color: primary,), label: 'Hubs'),
           NavigationDestination(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle, color: primary,),
             label: 'Profile',
           ),
         ],

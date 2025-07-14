@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lynkripe_v1/constants.dart';
 import '/components/HubCard.dart';
 
 class Hubs extends StatelessWidget {
@@ -18,23 +19,23 @@ class Hubs extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: background,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: background,
           centerTitle: true,
-          title: Image.asset('assets/hubs.png', height: 150),
+          title: Image.asset('assets/logo.png', height: 150),
           bottom: const TabBar(
-            indicatorColor: Colors.black,
-            labelColor: Colors.black,
+            indicatorColor: primary,
+            labelColor: primary,
             tabs: <Widget>[
-              Tab(icon: Icon(Icons.diversity_2)),
+              Tab(icon: Icon(Icons.diversity_2, color: primary,)),
               Tab(icon: Icon(Icons.star)),
             ],
           ),
         ),
         body: TabBarView(
           children: const <Widget>[
-            Center(child: HubCard()),
+            Center(child: HubCard(title:'Enchanted Tales', description: 'Enchanted Tales of the tech world', imgSrc: 'assets/p.jpg',)),
             Center(child: Text("It's sunny here")),
           ],
         ),

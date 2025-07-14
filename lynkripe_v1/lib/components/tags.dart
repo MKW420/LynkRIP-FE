@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:lynkripe_v1/constants.dart';
 
 class Tags extends StatelessWidget{
-    const Tags({super.key});
+
+   final String category;
+
+   const Tags({
+      super.key,
+      required this.category
+      });
+
 
     @override
     Widget build(BuildContext context){
        return Container(
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.2),
+                    color: lightPrimary,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Padding(
@@ -16,9 +24,9 @@ class Tags extends StatelessWidget{
                       horizontal: 12,
                     ),
                     child: Text(
-                      "Technology",
+                     category,
                       style: TextStyle(
-                        color: Colors.green,
+                        color: primary,
                         fontWeight: FontWeight.bold,
                         fontSize: 10,
                       ),

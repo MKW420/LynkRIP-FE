@@ -9,59 +9,75 @@ class auth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: background,
         body:Column(
           
           children: [
-            SizedBox(height:80),
-            Text("Lynk", style:h1, ),
-            SizedBox(height:10),
-            Text("Welcome back to Lynk!", style:h2.copyWith(fontSize: 15, color:black) ),
-            SizedBox(height:120),
+            SizedBox(height:5),
+            Image.asset('assets/logo.png', height: 270,),
             Padding(
-              padding:EdgeInsets.symmetric(horizontal:22),
+              padding:EdgeInsets.symmetric(horizontal:20, vertical: 10),
               child:  TextField(
                 decoration: InputDecoration(
-                  fillColor: lightBlue, 
+                  fillColor: lightPrimary, 
                   filled:true, 
-                  hintText:"Email",
+                  hintText:"Enter your email",
                   border:OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10), 
                     borderSide: BorderSide.none)),
-              ),           
+              ),     
+                    
             ),
-             Padding(
-              padding:EdgeInsets.symmetric(horizontal:22, vertical: 23),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 22, vertical: 2),
+                child: Align(alignment: Alignment.centerLeft ,child:Text("* Incorrect email entered",
+                style: body.copyWith(
+                  fontSize:12,
+                  color:red,
+                  fontWeight: FontWeight.w500
+                ))),
+              ),             
+              Padding(
+              padding:EdgeInsets.symmetric(horizontal:20, vertical: 10),
               child:  TextField(
               
-                decoration: InputDecoration(fillColor: lightBlue, filled:true, hintText:"Password",
+                decoration: InputDecoration(fillColor: lightPrimary, filled:true, hintText:"Enter your password",
                 border:OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none),
 
                 ),
                 ),
               ),
+               Padding(
+                padding: EdgeInsets.symmetric(horizontal: 22, vertical:2),
+                child: Align(alignment: Alignment.centerLeft ,child:Text("* Incorrect password entered",
+                style: body.copyWith(
+                  fontSize:12,
+                  color:red,
+                  fontWeight: FontWeight.w500
+                ))),
+              ),  
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 22),
+                padding: EdgeInsets.symmetric(horizontal: 22, vertical: 15),
                 child: Align(alignment: Alignment.centerLeft ,child:Text("Forgot your password?",
                 style: body.copyWith(
                   fontSize:15,
-                  color:black,
+                  color:darkPrimary,
                   fontWeight: FontWeight.w500
                 ))),
               ),
-              SizedBox(height:50, width: 160),
+              SizedBox(height:15, width: 160),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 22),
-                child:Custombutton()
+                child:Custombutton(buttonText: 'Sign in',)
               ),
               SizedBox(height:50),
-              Text("Not a member? Register now", style: body.copyWith(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black )),
-              SizedBox(height: 60),
+              Text("Not a member? Register now", style: body.copyWith(fontSize: 16, fontWeight: FontWeight.w500, color: darkPrimary )),
+              SizedBox(height: 30),
               Text("Or continue with", style: body.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color:black
+                color:darkPrimary
               ),
                 ),
               SizedBox(height:50),

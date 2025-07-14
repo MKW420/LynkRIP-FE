@@ -1,8 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:lynkripe_v1/constants.dart';
 
 class search extends StatelessWidget{
-    const search({super.key});
+
+  final String searchText;
+    const search({
+      super.key,
+      required this.searchText
+      });
 
     @override
     Widget build(BuildContext context){
@@ -11,7 +17,7 @@ class search extends StatelessWidget{
             padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search Linkrs...',
+                hintText: searchText,
                 prefixIcon: const Icon(Icons.search, size: 20),
                 contentPadding: const EdgeInsets.symmetric(vertical: 10),
                 border: OutlineInputBorder(
@@ -19,7 +25,7 @@ class search extends StatelessWidget{
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Colors.grey.withOpacity(0.1),
+                fillColor: lightPrimary,
               ),
             ),
       

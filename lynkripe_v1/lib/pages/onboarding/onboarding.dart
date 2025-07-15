@@ -1,54 +1,146 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lynkripe_v1/constants.dart';
+class onboarding extends StatefulWidget{
+  @override
+  State<onboarding> createState() => _onboardingState();
+}
 
-class onboarding extends StatelessWidget{
-    const onboarding({super.key});
+class _onboardingState extends State<onboarding> {
+    // const onboarding({super.key});
+    late PageController _pageController;
+
+    @override
+  void initState() {
+    // TODO: implement createElement
+    _pageController = PageController(initialPage: 0);
+    super.initState(); 
+  } 
+
+   @override
+   void dispose(){
+    _pageController.dispose();
+    super.dispose();
+   }
 
     @override
     Widget build(BuildContext context){
       return  Scaffold(
-         appBar: AppBar(
-            backgroundColor:  Colors.white,
-            title: Align(alignment: Alignment.center,child:Text('Lynk', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0))),
-           
-          ),
-        
-        body:Column(
-          children: [
-            Container(
-              width:MediaQuery.of(context).size.width,
-              height:MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color:Colors.white,
-                 image:DecorationImage(image: AssetImage('assets/linkshare.png'))
+      backgroundColor: Colors.white,
 
-              ),
-               
-             
-            ),
-            Container(
-               width:MediaQuery.of(context).size.width,
-              height:290,
-              decoration: BoxDecoration(
-                color:Colors.white,
-              ),
-              child:Column(
-                children:[
-                  Text('Share your Lynk Hubs',
-                  style: TextStyle(fontSize:30, fontWeight: FontWeight.bold)),
-                  Text('Turn your hubs into public knowledge hubs',
-                  style: TextStyle(fontSize:15,))
-                ]
-              )
-             
-            ),  
-          
-          ],
-        
+      body: SafeArea(
+        child:Column(children: [
+          Expanded(child:PageView.builder(
+            itemCount: data.length,
+            controller: _pageController,
+            itemBuilder: (context, index) =>
+         OnboardingComponent(
+          image: data[index].image,
+          title: data[index].title,
+          description: data[index].description,
+        )
+      ),
+      ),
+       
+      SizedBox( 
+      height: 60, 
+      width:60,
+      child: ElevatedButton(
+        onPressed: (){
+          _pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+        }, 
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(),
+          backgroundColor: primary
+       ),
+        child: Icon(Icons.arrow_forward,color: Colors.white,))
+    
       )
+        ],
+        )
+        
+      ),
       );
     }
+}
+class Onboard {
+  final String image,title,description;
+
+  const Onboard({
+    required this.image,
+    required this.title,
+    required this.description
+  });
+
+}
+
+ final List<Onboard> data = [
+       Onboard(
+          image: "assets/sharelink.png",
+          title: "All your Links in one place",
+          description: "Yadadadadadadadadada",
+        ),
+          Onboard(
+          image: "assets/sharelink2.png",
+          title: "Create Hubs to share",
+          description: "Yadadadadadadadadada",
+        ),
+          Onboard(
+          image: "assets/sharelink.png",
+          title: "Be on top of it!",
+          description: "Yadadadadadadadadada",
+        ),
+          Onboard(
+          image: "assets/sharelink.png",
+          title: "All your Links in one place",
+          description: "Yadadadadadadadadada",
+        )
+  ];
+class OnboardingComponent extends StatelessWidget {
+
+  final String image,title,description;
+
+  const OnboardingComponent({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.description
+  });
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+       mainAxisSize: MainAxisSize.max,
+       crossAxisAlignment: CrossAxisAlignment.center,
+       verticalDirection: VerticalDirection.down,
+      children: [
+        SizedBox(height: 150,),
+        
+        Image.asset(image, height:250 ),
+          SizedBox(height: 150,),
+        Text(title,
+        textAlign: TextAlign.center,
+        style: Theme.of(context)
+               .textTheme
+               .headlineSmall!
+               .copyWith(fontWeight: FontWeight.w400),
+           
+               ),
+      const SizedBox(height:16),
+      Text(description, 
+      textAlign: TextAlign.center, 
+      style: GoogleFonts.inter(
+         fontSize: 12,
+        color: Colors.grey,
+        fontWeight: FontWeight.w400,
+      )
+      ),
     
-
-
+      ]
+    );
+  }
 }

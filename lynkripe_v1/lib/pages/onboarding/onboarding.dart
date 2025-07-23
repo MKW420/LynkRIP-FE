@@ -79,17 +79,17 @@ class Onboard {
        Onboard(
           image: "assets/sharelink.png",
           title: "All your Links in one place",
-          description: "Yadadadadadadadadada",
+          description: "Save any link in seconds, no more losing track of saved content!",
         ),
           Onboard(
           image: "assets/sharelink2.png",
           title: "Create Hubs to share",
-          description: "Yadadadadadadadadada",
+          description: "Sort bookmarks into Hubs and share them with your friends",
         ),
           Onboard(
           image: "assets/sharelink.png",
-          title: "Be on top of it!",
-          description: "Yadadadadadadadadada",
+          title: "Be on Top of it!",
+          description: "Everything is taken care of, all you have to do is save!",
         ),
           Onboard(
           image: "assets/sharelink.png",

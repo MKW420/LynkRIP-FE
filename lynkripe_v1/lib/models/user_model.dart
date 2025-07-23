@@ -7,7 +7,6 @@ class MyUser extends Equatable{
   final String email;
   final String name;
 
-//CONSTRUCTER
   const MyUser({
     required this.userId,
     required this.email,
@@ -19,7 +18,6 @@ class MyUser extends Equatable{
     email: '', 
     name: '');
 
-//modify those fields
     MyUser copyWith({
       String? userId,
       String? email,

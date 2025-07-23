@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lynkripe_v1/constants.dart';
 import 'package:lynkripe_v1/firebase_options.dart';
 import 'package:lynkripe_v1/pages/auth_register.dart';
 import '/pages/onboarding/onboarding.dart';
-import 'pages/auth_signUp.dart';
 import '/pages/Home.dart';
 import '/pages/hubs.dart';
 import '/pages/profile.dart';
@@ -14,6 +14,8 @@ import 'firebase_options.dart';
 void main() async{
   
   WidgetsFlutterBinding.ensureInitialized();
+  // Bloc.observer = const AppBlocObserver();
+
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
 );
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: onboarding());
+    return MaterialApp(home: NavigationBarPage());
   }
 }
 

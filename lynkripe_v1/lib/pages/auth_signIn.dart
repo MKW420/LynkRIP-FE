@@ -1,11 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lynkripe_v1/pages/Home.dart';
+import 'package:lynkripe_v1/pages/onboarding/onboarding.dart';
+import 'package:lynkripe_v1/services/firebase/auth/blocs/auth_bloc/auth_bloc.dart';
 import '../services/firebase/auth/firebase_auth_google.dart';
 import '/components/button.dart';
 import '/constants.dart';
 
-class auth extends StatelessWidget {
-  const auth({super.key});
-   
+ class AuthLogin extends StatefulWidget {
+ 
+  static String id = 'login_screen';
+
+  const AuthLogin({Key? key}): super(key:key);
+
+  @override
+  State<AuthLogin> createState() => _authStateScreen();
+  
+}
+
+class _authStateScreen extends State<AuthLogin>{
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +42,7 @@ class auth extends StatelessWidget {
             Padding(
               padding:EdgeInsets.symmetric(horizontal:20, vertical: 10),
               child:  TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                   fillColor: lightPrimary, 
                   filled:true, 
@@ -40,13 +65,13 @@ class auth extends StatelessWidget {
               Padding(
               padding:EdgeInsets.symmetric(horizontal:20, vertical: 10),
               child:  TextField(
-              
+                controller: passwordController,
                 decoration: InputDecoration(fillColor: lightPrimary, filled:true, hintText:"Enter your password",
                 border:OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none),
-
                 ),
-                ),
+                 ),
+                 
               ),
                Padding(
                 padding: EdgeInsets.symmetric(horizontal: 22, vertical:2),
@@ -80,9 +105,7 @@ class auth extends StatelessWidget {
                 color:darkPrimary
               ),
                 ),
-              SizedBox(height:50),
-            
-              
+              SizedBox(height:50),      
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -101,7 +124,22 @@ class auth extends StatelessWidget {
                 ) ,
                   ),
                 
-              ],)     
+              ],) ,
+              BlocBuilder<AuthBloc, AuthState>(
+                builder: (context,state){
+                  if(state.status == AuthenticationStatus.authenticated){
+                    return const Explore();
+                  }
+                  else{
+                    return const Explore();
+                  }
+                  
+                 
+                }, 
+              )
+               
+           
+                 
           ])
       );
       

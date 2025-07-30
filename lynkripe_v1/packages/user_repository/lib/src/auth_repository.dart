@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:lynkripe_v1/models/models.dart';
+import 'package:user_repository/src/models/models.dart';
 
 abstract class UserRepositiory{
     Stream<User?> get user;

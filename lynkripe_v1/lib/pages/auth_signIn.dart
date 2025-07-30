@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lynkripe_v1/pages/Home.dart';
 import 'package:lynkripe_v1/pages/onboarding/onboarding.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/auth_bloc/auth_bloc.dart';
+import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 import '../services/firebase/auth/firebase_auth_google.dart';
 import '/components/button.dart';
 import '/constants.dart';
@@ -22,7 +23,9 @@ class _authStateScreen extends State<AuthLogin>{
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
+  bool signInRequired = false;
+ 
   @override
   void dispose(){
     emailController.dispose();
@@ -66,10 +69,13 @@ class _authStateScreen extends State<AuthLogin>{
               padding:EdgeInsets.symmetric(horizontal:20, vertical: 10),
               child:  TextField(
                 controller: passwordController,
+                obscureText: true,
                 decoration: InputDecoration(fillColor: lightPrimary, filled:true, hintText:"Enter your password",
                 border:OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none),
+                
                 ),
+                
                  ),
                  
               ),
@@ -94,7 +100,19 @@ class _authStateScreen extends State<AuthLogin>{
               SizedBox(height:15, width: 160),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 22),
-                child:Custombutton(buttonText: 'Sign in',)
+                child:TextButton(
+                  onPressed: (){ 
+                    context.read<SignInBloc>().add(SignInRequired(
+                      emailController.text,
+                      passwordController.text
+                    ));
+                },
+                child: Text(
+                  'Sign In'
+                ) ,
+  
+                ),
+
               ),
               SizedBox(height:50),
               Text("Not a member? Register now", style: body.copyWith(fontSize: 16, fontWeight: FontWeight.w500, color: darkPrimary )),
@@ -125,18 +143,7 @@ class _authStateScreen extends State<AuthLogin>{
                   ),
                 
               ],) ,
-              BlocBuilder<AuthBloc, AuthState>(
-                builder: (context,state){
-                  if(state.status == AuthenticationStatus.authenticated){
-                    return const Explore();
-                  }
-                  else{
-                    return const Explore();
-                  }
-                  
-                 
-                }, 
-              )
+             
                
            
                  

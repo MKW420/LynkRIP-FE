@@ -1,7 +1,7 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:lynkripe_v1/entities/bookmark_entity.dart';
-import '../entities/entities.dart';
+import 'package:user_repository/user_repository.dart';
+
 
 class Bookmark extends Equatable{
 

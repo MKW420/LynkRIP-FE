@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:lynkripe_v1/models/user_model.dart';
-import 'package:lynkripe_v1/services/firebase/repository/auth_repository.dart';
+import 'package:user_repository/src/models/models.dart';
+import 'package:user_repository/src/auth_repository.dart';
 
 class FirebaseUserRepo implements UserRepositiory{
   final FirebaseAuth _firebaseAuth;
@@ -11,6 +11,7 @@ class FirebaseUserRepo implements UserRepositiory{
     FirebaseAuth? firebaseAuth
   }): _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
+  
   @override
   Future<MyUser?> signIn(String email, String password) async{
 

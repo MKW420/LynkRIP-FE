@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:lynkripe_v1/entities/hub_entity.dart';
-import '../entities/entities.dart';
+import 'package:user_repository/user_repository.dart';
+
 
 class Hubs extends Equatable{
   final String hubId;
@@ -11,8 +11,6 @@ class Hubs extends Equatable{
   final DateTime? hubCreationDate;
   final String hubshareURL;
 
-
-//CONSTRUCTER
   const Hubs({
     required this.hubId,
     required this.userId,

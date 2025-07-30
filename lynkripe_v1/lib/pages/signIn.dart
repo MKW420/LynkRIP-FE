@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lynkripe_v1/pages/Home.dart';
-import 'package:lynkripe_v1/pages/onboarding/onboarding.dart';
-import 'package:lynkripe_v1/services/firebase/auth/blocs/auth_bloc/auth_bloc.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 import '../services/firebase/auth/firebase_auth_google.dart';
-import '/components/button.dart';
 import '/constants.dart';
 
- class AuthLogin extends StatefulWidget {
+ class AuthSignInScreen extends StatefulWidget {
  
   static String id = 'login_screen';
 
-  const AuthLogin({Key? key}): super(key:key);
+  const AuthSignInScreen({Key? key}): super(key:key);
 
   @override
-  State<AuthLogin> createState() => _authStateScreen();
+  State<AuthSignInScreen> createState() => _authStateScreen();
   
 }
 
-class _authStateScreen extends State<AuthLogin>{
+class _authStateScreen extends State<AuthSignInScreen>{
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool signInRequired = false;
+  String? _error_msg;
  
   @override
   void dispose(){
@@ -35,7 +32,26 @@ class _authStateScreen extends State<AuthLogin>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocListener<SignInBloc, SignInBlocState>(
+      listener: (context, state){
+        if(state is SignInSuccess){
+          setState(() {
+            signInRequired = false;
+          });
+
+        }else if(state is SignInProcess){
+          setState(() {
+            signInRequired=true;
+          });
+        }
+        else if(state is SignInFailure){
+          setState(() {
+            signInRequired = false;
+            _error_msg = 'Invalid email or password';
+          });
+        }
+    },
+    child:Scaffold(
       backgroundColor: background,
         body:Column(
           
@@ -148,9 +164,14 @@ class _authStateScreen extends State<AuthLogin>{
            
                  
           ])
-      );
+      )
+    );
       
   }
+
+
  
   
 }
+
+

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lynkripe_v1/pages/signIn_provider.dart';
+import 'package:lynkripe_v1/pages/auth/auth_providers/signIn_provider.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_up_bloc/sign_up_bloc.dart';
+import 'package:lynkripe_v1/services/firebase/auth/firebase_auth_google.dart';
 import 'package:user_repository/user_repository.dart';
-import '../services/firebase/auth/firebase_auth_google.dart';
 import '/constants.dart';
 
 class SignUpScreen extends StatefulWidget{

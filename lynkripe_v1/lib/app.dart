@@ -4,8 +4,6 @@ import 'package:lynkripe_v1/pages/app_view.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/auth_bloc/auth_bloc.dart';
 import 'package:user_repository/user_repository.dart';
 
-
-
 class MyApp extends StatelessWidget {
   final UserRepositiory userRepositiory;
 
@@ -21,3 +19,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+ 

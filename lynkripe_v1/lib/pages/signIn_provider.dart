@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lynkripe_v1/pages/signIn.dart';
+import 'package:lynkripe_v1/pages/auth_signIn.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/auth_bloc/auth_bloc.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 
@@ -12,11 +12,10 @@ import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_in_bloc/sign_in_bl
 }
 
 class _AuthScreenState extends State<AuthSignIn> with TickerProviderStateMixin{
-  @override
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<SignInBloc>(
       create: (context) => SignInBloc(userRepositiory: context.read<AuthBloc>().userRepo),
       child:const AuthSignInScreen()
       );

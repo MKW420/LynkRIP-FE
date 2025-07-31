@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lynkripe_v1/pages/Home.dart';
-import 'package:lynkripe_v1/pages/hubs.dart';
+import 'package:lynkripe_v1/pages/signIn_provider.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/auth_bloc/auth_bloc.dart';
+import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 
 class AppView extends StatelessWidget{
     const AppView({super.key});
@@ -12,10 +13,14 @@ class AppView extends StatelessWidget{
         home:  BlocBuilder<AuthBloc, AuthState>(
                 builder: (context,state){
                   if(state.status == AuthenticationStatus.authenticated){
-                    return const Explore();
+                    return BlocProvider(
+                      create: (context) => SignInBloc(
+                        userRepositiory: context.read<AuthBloc>().userRepo),
+                        child: const Explore(),
+                        );
                   }
                   else{
-                    return const Hubs();
+                    return const AuthSignIn();
                   }
                 }, 
               )

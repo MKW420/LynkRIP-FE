@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lynkripe_v1/pages/signUp_provider.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 import '../services/firebase/auth/firebase_auth_google.dart';
 import '/constants.dart';
@@ -12,7 +13,6 @@ import '/constants.dart';
 
   @override
   State<AuthSignInScreen> createState() => _authStateScreen();
-  
 }
 
 class _authStateScreen extends State<AuthSignInScreen>{
@@ -89,7 +89,7 @@ class _authStateScreen extends State<AuthSignInScreen>{
                 decoration: InputDecoration(fillColor: lightPrimary, filled:true, hintText:"Enter your password",
                 border:OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none),
-                
+              
                 ),
                 
                  ),
@@ -114,7 +114,8 @@ class _authStateScreen extends State<AuthSignInScreen>{
                 ))),
               ),
               SizedBox(height:15, width: 160),
-              Padding(
+              !signInRequired ?
+               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 22),
                 child:TextButton(
                   onPressed: (){ 
@@ -123,15 +124,19 @@ class _authStateScreen extends State<AuthSignInScreen>{
                       passwordController.text
                     ));
                 },
+                
                 child: Text(
                   'Sign In'
-                ) ,
-  
                 ),
+                ),
+              ): const CircularProgressIndicator(),
+              SizedBox(height:50),
+              TextButton(
+                onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => AuthSignUp()))},
+                child: Text('Not a member? Register now'),
 
               ),
-              SizedBox(height:50),
-              Text("Not a member? Register now", style: body.copyWith(fontSize: 16, fontWeight: FontWeight.w500, color: darkPrimary )),
+              
               SizedBox(height: 30),
               Text("Or continue with", style: body.copyWith(
                 fontSize: 16,
@@ -160,18 +165,11 @@ class _authStateScreen extends State<AuthSignInScreen>{
                 
               ],) ,
              
-               
-           
-                 
           ])
       )
     );
       
   }
-
-
- 
-  
 }
 
 

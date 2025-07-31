@@ -12,7 +12,6 @@ const vibrantOrange = Color(0xFFDC6803);
 const successGreen = Color(0xFF039855);
 
 
-
 //font styles
 const h1 = TextStyle(fontSize:35, fontWeight: FontWeight.bold, color:black);
 const h2 = TextStyle(fontSize:20, fontWeight: FontWeight.bold, color: black);

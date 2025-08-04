@@ -2,18 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lynkripe_v1/constants.dart';
-class onboarding extends StatefulWidget{
+class OnboardingPage extends StatefulWidget{
   @override
-  State<onboarding> createState() => _onboardingState();
+  State<OnboardingPage> createState() => _onboardingState();
 }
 
-class _onboardingState extends State<onboarding> {
+class _onboardingState extends State<OnboardingPage> {
     // const onboarding({super.key});
     late PageController _pageController;
 
     @override
   void initState() {
-    // TODO: implement createElement
     _pageController = PageController(initialPage: 0);
     super.initState(); 
   } 

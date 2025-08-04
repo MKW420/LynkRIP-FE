@@ -17,8 +17,8 @@ class FirebaseUserRepo implements UserRepositiory{
 
     try{
       final UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email.trim(),
-        password: password.trim());
+        email: email.toString().trim(),
+        password: password.toString().trim());
         final User?  firebaseUser = userCredential.user;
         if(firebaseUser != null){
           return MyUser(

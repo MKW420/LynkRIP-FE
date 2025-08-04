@@ -1,3 +1,4 @@
+import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lynkripe_v1/app.dart';
@@ -7,12 +8,16 @@ import 'package:user_repository/user_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async{
-  
+ 
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
    options: DefaultFirebaseOptions.currentPlatform,
   );
   Bloc.observer = SimpleBlocObserver();
-  runApp(MyApp(FirebaseUserRepo()));
+  final appLinks = AppLinks();
+  final intialUri = await appLinks.getInitialLink();
+  
+  runApp(MyApp(FirebaseUserRepo(), intialUri:intialUri));
+
 }

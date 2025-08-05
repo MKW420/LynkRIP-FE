@@ -6,7 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lynkripe_v1/Routes/routing.dart';
 import 'package:lynkripe_v1/app.dart';
+import 'package:lynkripe_v1/constants.dart';
+import 'package:lynkripe_v1/pages/auth/auth_providers/signIn_provider.dart';
+import 'package:lynkripe_v1/pages/home.dart';
+import 'package:lynkripe_v1/pages/navigation.dart';
 import 'package:lynkripe_v1/services/firebase/auth/blocs/auth_bloc/auth_bloc.dart';
+import 'package:lynkripe_v1/services/firebase/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 
 class DeepLinkService extends  State<MyApp>{
 
@@ -19,7 +24,7 @@ class DeepLinkService extends  State<MyApp>{
   @override
   void initState(){
     super.initState();
-    // initDeepLinks();
+
       WidgetsBinding.instance.addPostFrameCallback((_) {
       initDeepLinks();
   });
@@ -68,23 +73,96 @@ class DeepLinkService extends  State<MyApp>{
   }
 
   @override
-  Widget build(BuildContext context){
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AuthBloc(
-            userRepo: widget.userRepositiory,
-          ),
-            // Optional: Add initial event
-        ),
-      ],
-      
-    child: MaterialApp.router(
-      routerConfig: _goRouter,
-      debugShowCheckedModeBanner: false,
-    ),
-    );
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: _goRouter,  // Pass the routerConfig (GoRouter) to handle app navigation.
+      debugShowCheckedModeBanner: false,  
+       builder: (context, child) {
+      return BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          // This will be applied to all routes
+          if (state.status == AuthenticationStatus.authenticated) {
+            return BlocProvider(
+              create: (context) => SignInBloc(
+                userRepositiory: context.read<AuthBloc>().userRepo,
+              ),
+              child: child, // The router's content
+            );
+          } else {
+            return const AuthSignIn(); // Override all routes when not authenticated
+          }
+        },
+      );
+     
+  });
+    
   }
-  
-
 }
+
+
+
+
+  // @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp.router(
+			
+// 			home: BlocBuilder<AuthBloc, AuthState>(
+// 				builder: (context, state) {
+// 					if(state.status == AuthenticationStatus.authenticated) {
+// 						return BlocProvider(
+// 							create: (context) => SignInBloc(
+// 								userRepositiory: context.read<AuthBloc>().userRepo
+// 							),
+// 							child: const NavigationBarPage(),
+// 						);
+// 					} else {
+// 						return const AuthSignIn();
+// 					}
+// 				}
+// 			)
+// 		);
+//   }
+//     }
+  // home:BlocBuilder<AuthBloc, AuthState>(
+  //   builder:(context, state) {
+  //     if(state.status == AuthenticationStatus.authenticated){
+  //       return BlocProvider(
+  //         create: (context) => SignInBloc(
+  //           userRepositiory: context.read<AuthBloc>().userRepo),
+  //           child: const NavigationBarPage()
+  //       );
+
+  //     }else{
+  //       return const AuthSignIn();
+  //     }
+  //   })
+  
+  //}
+
+//  Widget build(BuildContext context) {
+//   return BlocProvider<AuthBloc>(
+//     create: (context) => AuthBloc(
+//       userRepo:  context.read<AuthBloc>().userRepo
+//     ),
+//     child: MaterialApp.router(
+//       routerConfig: _goRouter,
+//       debugShowCheckedModeBanner: false,
+//       builder: (context, child) {
+//         return BlocBuilder<AuthBloc, AuthState>(
+//           builder: (context, state) {
+//             if (state.status == AuthenticationStatus.authenticated) {
+//               return BlocProvider(
+//                 create: (context) => SignInBloc(
+//                   userRepositiory: context.read<AuthBloc>().userRepo,
+//                 ),
+//                 child: child ?? const NavigationBarPage(),
+//               );
+//             }
+//             return child ?? const AuthSignIn();
+//           },
+//         );
+//       },
+//     ),
+//   );
+
+

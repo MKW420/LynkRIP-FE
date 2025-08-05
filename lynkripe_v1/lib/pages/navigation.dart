@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lynkripe_v1/constants.dart';
+import 'package:lynkripe_v1/pages/shared_hub.dart';
 import '/pages/Home.dart';
 import '/pages/hubs.dart';
 import '/pages/profile.dart';
@@ -21,6 +22,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
       body: <Widget>[
         const Explore(),
         const Hubs(),
+        const SharedHub(hubId: '',),
         const ProfilePage(),
       ][currentPageIndex],
 
@@ -36,6 +38,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         destinations: const <Widget>[
           NavigationDestination(icon: Icon(Icons.home, color: primary,), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.hub, color: primary,), label: 'Hubs'),
+           NavigationDestination(icon: Icon(Icons.share_location, color: primary,), label: 'shared Hub'),
           NavigationDestination(
             icon: Icon(Icons.account_circle, color: primary,),
             label: 'Profile',

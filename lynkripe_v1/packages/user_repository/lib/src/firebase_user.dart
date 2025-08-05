@@ -27,6 +27,8 @@ class FirebaseUserRepo implements UserRepositiory{
             name: firebaseUser.displayName ?? '',
           );
         }
+          print(firebaseUser);
+
 
      }on FirebaseAuthException catch (e){
       if(e.code == 'user-not-found'){
@@ -36,7 +38,7 @@ class FirebaseUserRepo implements UserRepositiory{
        print("Wrong password provided for this user.");
       }
       else{
-         print(e.toString());
+         print('ERROR'+ e.toString());
       }
     }
     return null;

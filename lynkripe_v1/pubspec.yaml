@@ -70,6 +70,7 @@ flutter:
     - assets/p.jpg
     - assets/sharelink.png
     - assets/sharelink2.png
+    - assets/hub.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

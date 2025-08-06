@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lynkripe_v1/constants.dart';
+import 'package:lynkripe_v1/socials.dart';
 import '/components/Tags.dart';
 import '/components/search.dart';
 
@@ -8,6 +9,7 @@ class Lynkcard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.source,
+    required this.icon,
     this.tags,
   });
 
@@ -15,6 +17,7 @@ class Lynkcard extends StatelessWidget {
   final String subtitle;
   final String source;
   final Widget? tags;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +41,8 @@ class Lynkcard extends StatelessWidget {
         ),
       Row(
           children: [
-            Icon(Icons.facebook, size: 14, color: Colors.black87), 
-            const SizedBox(width: 4), // Add some spacing
+            icon,
+            const SizedBox(width: 8), // Add some spacing
             Text(source, style: const TextStyle(fontSize: 12.0, color: Colors.black87)),
           ],
         ),
@@ -62,6 +65,7 @@ class LynkItem extends StatelessWidget {
     required this.subtitle,
     required this.source,
     required this.tags,
+    required this.icon,
   });
 
   final Widget thumbnail;
@@ -69,6 +73,7 @@ class LynkItem extends StatelessWidget {
   final String subtitle;
   final String source;
   final Widget tags;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +92,7 @@ class LynkItem extends StatelessWidget {
                   title: title,
                   subtitle: subtitle,
                   source: source,
+                  icon: icon,
                   tags: tags,
                 ),
               ),
@@ -104,6 +110,7 @@ class Lynk extends StatelessWidget {
   final String subtitle;
   final String source;
   final Widget tags;
+  final Widget icon;
 
   const Lynk({
     super.key,
@@ -112,6 +119,7 @@ class Lynk extends StatelessWidget {
     required this.subtitle,
     required this.source,
     required this.tags,
+    required this.icon,
   });
 
   @override
@@ -136,7 +144,7 @@ class Lynk extends StatelessWidget {
         ),
       Row(
           children: [
-            Icon(Icons.facebook, size: 14, color: Colors.black87), 
+            icon,
             const SizedBox(width: 4), // Add some spacing
             Text(source, style: const TextStyle(fontSize: 12.0, color: Colors.black87)),
           ],

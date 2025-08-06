@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lynkripe_v1/components/header.dart';
 import 'package:lynkripe_v1/components/lynkCard.dart';
 import 'package:lynkripe_v1/constants.dart';
+import 'package:lynkripe_v1/socials.dart';
 import '/components/Tags.dart';
 import '/components/search.dart';
 
@@ -80,16 +81,19 @@ class CustomListItemExample extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index){
                return  LynkItem(
-            thumbnail: Container(decoration: const BoxDecoration(color: lightPrimary)),
+            thumbnail: Container(decoration: const BoxDecoration(color: lightPrimary,)),
             title: 'Flutter 1.0 Launch',
             subtitle: 'Flutter continues to improve and expand its horizons. '
                 'This text should max out at two lines and clip',
             source: 'Medium',
+            icon: medium, 
             tags: Row(
               children: [
                Tags(category: 'technology',)
               ],
+              
             ),
+
                );
           
                 

@@ -35,7 +35,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         },
         indicatorColor: lightPrimary,
         destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home, color: primary,), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.home, color: primary,), label: 'Digests'),
           NavigationDestination(icon: Icon(Icons.hub, color: primary,), label: 'Hubs'),
            NavigationDestination(icon: Icon(Icons.share_location, color: primary,), label: 'shared Hub'),
          

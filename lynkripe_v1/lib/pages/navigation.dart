@@ -23,7 +23,6 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         const Explore(),
         const Hubs(),
         const SharedHub(hubId: '',),
-        const ProfilePage(),
       ][currentPageIndex],
 
       bottomNavigationBar: NavigationBar(
@@ -39,10 +38,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           NavigationDestination(icon: Icon(Icons.home, color: primary,), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.hub, color: primary,), label: 'Hubs'),
            NavigationDestination(icon: Icon(Icons.share_location, color: primary,), label: 'shared Hub'),
-          NavigationDestination(
-            icon: Icon(Icons.account_circle, color: primary,),
-            label: 'Profile',
-          ),
+         
         ],
       ),
     );

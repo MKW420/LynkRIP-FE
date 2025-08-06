@@ -23,6 +23,40 @@ class CustomListItemExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: background,
       appBar:  const Header(),
+      drawer: NavigationDrawer(
+        backgroundColor: background,
+          
+        children: [
+          DrawerHeader(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              spacing: 5,
+              children: [
+                 Icon(Icons.supervised_user_circle_rounded, size: 40, color: primary,),
+                 Text("4cynart@gmail.com")
+
+              ],
+            )
+          ),
+          NavigationDrawerDestination(
+            backgroundColor: background,
+            icon: Icon(Icons.book_rounded, color: primary), 
+            label: Text('lynks')),
+           
+          NavigationDrawerDestination(
+            icon: Icon(Icons.hub_rounded,color: primary), 
+            label: Text('Hubs')),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.star,color: primary), 
+            label: Text('Starred Hubs')),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.newspaper_rounded,color: primary), 
+            label: Text('Weekly Digest lynks')),
+            SizedBox(height: 50,),
+            TextButton(onPressed: (){}, 
+           
+           child: Text('Sign out'),),
+           ]),
       body: ListView(
         padding: const EdgeInsets.all(10.0),
         children: <Widget>[

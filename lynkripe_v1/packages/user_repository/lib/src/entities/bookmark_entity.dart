@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class BookmarkEntity extends Equatable{
   final String  bookmarkId;
+  final String userId;
   final String bookmarkURL;
   final String? bookmarkText;
   final DateTime? bookmarkCreationDate;
@@ -10,6 +11,7 @@ class BookmarkEntity extends Equatable{
 
   const BookmarkEntity({
     required this.bookmarkId,
+    required this.userId,
     required this.bookmarkURL,
     required this.bookmarkText,
     required this.bookmarkCreationDate,
@@ -20,6 +22,7 @@ class BookmarkEntity extends Equatable{
   Map<String, Object?> toDocument(){
     return{
       'bookmarkId': bookmarkId,
+      'userId': userId,
       'bookmarkURL': bookmarkURL,
       'bookmarkText': bookmarkText,
       'bookmarkCreationDate': bookmarkCreationDate,
@@ -31,6 +34,7 @@ class BookmarkEntity extends Equatable{
    static BookmarkEntity fromDocument(Map<String, dynamic> doc){
     return BookmarkEntity(
       bookmarkId: doc['bookmarkId'],
+      userId: doc['userId'],
       bookmarkURL: doc['bookmarkURL'],
       bookmarkText: doc['bookmarkText'],
       bookmarkCreationDate: doc['bookmarkCreationDate'],
@@ -40,5 +44,5 @@ class BookmarkEntity extends Equatable{
    }
 
   @override
-  List<Object?> get props => [bookmarkId,bookmarkURL,bookmarkText,bookmarkCreationDate,source, tags];
+  List<Object?> get props => [bookmarkId,userId, bookmarkURL,bookmarkText,bookmarkCreationDate,source, tags];
 }

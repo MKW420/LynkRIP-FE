@@ -77,6 +77,7 @@ class DeepLinkService extends  State<MyApp>{
     return MaterialApp.router(
       routerConfig: _goRouter,  // Pass the routerConfig (GoRouter) to handle app navigation.
       debugShowCheckedModeBanner: false,  
+      
        builder: (context, child) {
       return BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
@@ -98,71 +99,5 @@ class DeepLinkService extends  State<MyApp>{
     
   }
 }
-
-
-
-
-  // @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp.router(
-			
-// 			home: BlocBuilder<AuthBloc, AuthState>(
-// 				builder: (context, state) {
-// 					if(state.status == AuthenticationStatus.authenticated) {
-// 						return BlocProvider(
-// 							create: (context) => SignInBloc(
-// 								userRepositiory: context.read<AuthBloc>().userRepo
-// 							),
-// 							child: const NavigationBarPage(),
-// 						);
-// 					} else {
-// 						return const AuthSignIn();
-// 					}
-// 				}
-// 			)
-// 		);
-//   }
-//     }
-  // home:BlocBuilder<AuthBloc, AuthState>(
-  //   builder:(context, state) {
-  //     if(state.status == AuthenticationStatus.authenticated){
-  //       return BlocProvider(
-  //         create: (context) => SignInBloc(
-  //           userRepositiory: context.read<AuthBloc>().userRepo),
-  //           child: const NavigationBarPage()
-  //       );
-
-  //     }else{
-  //       return const AuthSignIn();
-  //     }
-  //   })
-  
-  //}
-
-//  Widget build(BuildContext context) {
-//   return BlocProvider<AuthBloc>(
-//     create: (context) => AuthBloc(
-//       userRepo:  context.read<AuthBloc>().userRepo
-//     ),
-//     child: MaterialApp.router(
-//       routerConfig: _goRouter,
-//       debugShowCheckedModeBanner: false,
-//       builder: (context, child) {
-//         return BlocBuilder<AuthBloc, AuthState>(
-//           builder: (context, state) {
-//             if (state.status == AuthenticationStatus.authenticated) {
-//               return BlocProvider(
-//                 create: (context) => SignInBloc(
-//                   userRepositiory: context.read<AuthBloc>().userRepo,
-//                 ),
-//                 child: child ?? const NavigationBarPage(),
-//               );
-//             }
-//             return child ?? const AuthSignIn();
-//           },
-//         );
-//       },
-//     ),
-//   );
 
 

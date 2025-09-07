@@ -1,15 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lynkripe_v1/components/header.dart';
 import 'package:lynkripe_v1/components/lynkCard.dart';
 import 'package:lynkripe_v1/constants.dart';
 import 'package:lynkripe_v1/socials.dart';
+import 'package:user_repository/user_repository.dart';
 import '/components/Tags.dart';
 import '/components/search.dart';
+
+final User? user = FirebaseAuth.instance.currentUser;
+String? userEmail = user?.email; 
+String? userName = user?.displayName; // Use null-safe access
 
 class Explore extends StatelessWidget {
   const Explore({super.key});
   static String id = 'main screen';
-
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +23,9 @@ class Explore extends StatelessWidget {
   }
 }
 class CustomListItemExample extends StatelessWidget {
+  
   const CustomListItemExample({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +41,7 @@ class CustomListItemExample extends StatelessWidget {
               spacing: 5,
               children: [
                  Icon(Icons.supervised_user_circle_rounded, size: 40, color: primary,),
-                 Text("4cynart@gmail.com")
-
+                 Text(userEmail != null ? userEmail! : 'no email' ),
               ],
             )
           ),

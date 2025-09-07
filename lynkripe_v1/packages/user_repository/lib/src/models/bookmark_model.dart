@@ -6,6 +6,7 @@ import 'package:user_repository/user_repository.dart';
 class Bookmark extends Equatable{
 
   final String  bookmarkId;
+  final String userId;
   final String bookmarkURL;
   final String? bookmarkText;
   final DateTime? bookmarkCreationDate;
@@ -16,6 +17,7 @@ class Bookmark extends Equatable{
 //CONSTRUCTER
   const Bookmark({
     required this.bookmarkId,
+    required this.userId,
     required this.bookmarkURL,
     required this.bookmarkText,
     required this.bookmarkCreationDate,
@@ -26,6 +28,7 @@ class Bookmark extends Equatable{
 
   static const empty = Bookmark(
     bookmarkId: '', 
+    userId: '',
     bookmarkURL: '', 
     bookmarkText: '',
     bookmarkCreationDate: null,
@@ -37,6 +40,7 @@ class Bookmark extends Equatable{
 //modify those fields
     Bookmark copyWith({
       String? bookmarkId,
+      String? userId,
       String? bookmarkURL,
       String? bookmarkText,
       DateTime? bookmarkCreationDate,
@@ -45,6 +49,7 @@ class Bookmark extends Equatable{
     }){
       return Bookmark(
        bookmarkId: bookmarkId ?? this.bookmarkId, 
+       userId: userId ?? this.userId,
        bookmarkURL: bookmarkURL ?? this.bookmarkURL, 
        bookmarkText: bookmarkText ?? this.bookmarkText, 
        bookmarkCreationDate: bookmarkCreationDate ?? this.bookmarkCreationDate, 
@@ -56,6 +61,7 @@ class Bookmark extends Equatable{
     BookmarkEntity toEntity(){
        return BookmarkEntity(
          bookmarkId: bookmarkId,
+         userId: userId,
          bookmarkURL: bookmarkURL,
          bookmarkText: bookmarkText,
          bookmarkCreationDate: bookmarkCreationDate,
@@ -68,6 +74,7 @@ class Bookmark extends Equatable{
     static Bookmark fromEntity(BookmarkEntity entity){
       return Bookmark(
         bookmarkId: entity.bookmarkId, 
+        userId: entity.userId,
         bookmarkURL: entity.bookmarkURL, 
         bookmarkText: entity.bookmarkText,
         bookmarkCreationDate: entity.bookmarkCreationDate,
@@ -77,6 +84,6 @@ class Bookmark extends Equatable{
     }
   
   @override
-  List<Object?> get props => [bookmarkId,bookmarkURL,bookmarkText,bookmarkCreationDate,source, tags];
+  List<Object?> get props => [bookmarkId,userId,bookmarkURL,bookmarkText,bookmarkCreationDate,source, tags];
   
 }
